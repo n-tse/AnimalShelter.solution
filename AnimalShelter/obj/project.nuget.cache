@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "tS6OU0ucFH/7yC9wS7Kc3zXG47QH8P1mza8OmM0/l7HyHToR3W/0FbtqUDY4M1FJA1H6Q6sb3vw32eDlI4TXJA==",
+  "dgSpecHash": "prNQpEXmmoQ68IVLuDmMBbpMT33ShInK22xMDFSU5iScbiTDhN7cSBHJmc/TxhSMkyhfta14IGLYLTAhc0Sf6Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\nicho\\Desktop\\Epicodus\\C#\\independent-projects\\AnimalShelter.solution\\AnimalShelter\\AnimalShelter.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\nicho\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\nicho\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\nicho\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.0\\microsoft.entityframeworkcore.5.0.0.nupkg.sha512",
     "C:\\Users\\nicho\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.0\\microsoft.entityframeworkcore.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\nicho\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.0\\microsoft.entityframeworkcore.analyzers.5.0.0.nupkg.sha512",
+    "C:\\Users\\nicho\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.0\\microsoft.entityframeworkcore.design.5.0.0.nupkg.sha512",
     "C:\\Users\\nicho\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.0\\microsoft.entityframeworkcore.relational.5.0.0.nupkg.sha512",
     "C:\\Users\\nicho\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\nicho\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
