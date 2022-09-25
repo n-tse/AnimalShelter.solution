@@ -20,6 +20,18 @@ namespace AnimalShelter.Controllers
       _db = db;
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetAll([FromQuery] PaginationFilter filter)
+    {
+      var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+      var pagedData = await context.Animals
+        .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
+        .Take(validFilter.PageSize)
+        .ToListAsync();
+      var totalRecords = await context.Animals.CountAsync();
+      return Ok(new PagedResponse<List<Animal>>(pagedData, validFilter.PageNumber, validFilter.PageSize));
+    }
+
     // GET api/animals
     [HttpGet]
     public async Task<List<Animal>> Get(string species, string name, int minimumAge)
