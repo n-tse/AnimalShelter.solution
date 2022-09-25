@@ -25,42 +25,51 @@ namespace AnimalShelter.Controllers
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] PaginationFilter filter)
+    public async Task<IActionResult> GetAll([FromQuery] PaginationFilter filter, string type)
     {
       var route = Request.Path.Value;
       var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
-      var pagedData = await _db.Animals
+
+      var query = _db.Animals.AsQueryable();
+      if (type != null)
+      {
+          query = query.Where(entry => entry.Type == type);
+      }
+
+      var pagedData = await query
+      // var pagedData = await _db.Animals
         .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
         .Take(validFilter.PageSize)
         .ToListAsync();
-      var totalRecords = await _db.Animals.CountAsync();
+      // var totalRecords = await _db.Animals.CountAsync();
+      var totalRecords = await query.CountAsync();
       var pagedReponse = PaginationHelper.CreatePagedReponse<Animal>(pagedData, validFilter, totalRecords, uriService, route);
       return Ok(pagedReponse);
     }
 
     // GET api/animals
-    [HttpGet]
-    public async Task<List<Animal>> Get(string species, string name, int minimumAge)
-    {
-      IQueryable<Animal> query = _db.Animals.AsQueryable();
+    // [HttpGet]
+    // public async Task<List<Animal>> Get(string species, string name, int minimumAge)
+    // {
+    //   IQueryable<Animal> query = _db.Animals.AsQueryable();
 
-      if (species != null)
-      {
-        query = query.Where(entry => entry.Species == species);
-      }
+    //   if (species != null)
+    //   {
+    //     query = query.Where(entry => entry.Species == species);
+    //   }
 
-      if (name != null)
-      {
-        query = query.Where(entry => entry.Name == name);
-      }
+    //   if (name != null)
+    //   {
+    //     query = query.Where(entry => entry.Name == name);
+    //   }
 
-      if (minimumAge > 0)
-      {
-        query = query.Where(entry => entry.Age >= minimumAge);
-      }
+    //   if (minimumAge > 0)
+    //   {
+    //     query = query.Where(entry => entry.Age >= minimumAge);
+    //   }
 
-      return await query.ToListAsync();
-    }
+    //   return await query.ToListAsync();
+    // }
 
     // POST api/animals
     [HttpPost]
