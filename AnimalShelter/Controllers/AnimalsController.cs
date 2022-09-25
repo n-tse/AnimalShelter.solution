@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AnimalShelter.Models;
+using AnimalShelter.Services;
+using AnimalShelter.Helpers;
 
 namespace AnimalShelter.Controllers
 {
@@ -14,22 +16,26 @@ namespace AnimalShelter.Controllers
   public class AnimalsController : ControllerBase
   {
     private readonly AnimalShelterContext _db;
+    private readonly IUriService uriService;
 
-    public AnimalsController(AnimalShelterContext db)
+    public AnimalsController(AnimalShelterContext db, IUriService uriService)
     {
       _db = db;
+      this.uriService = uriService;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] PaginationFilter filter)
     {
+      var route = Request.Path.Value;
       var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
-      var pagedData = await context.Animals
+      var pagedData = await _db.Animals
         .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
         .Take(validFilter.PageSize)
         .ToListAsync();
-      var totalRecords = await context.Animals.CountAsync();
-      return Ok(new PagedResponse<List<Animal>>(pagedData, validFilter.PageNumber, validFilter.PageSize));
+      var totalRecords = await _db.Animals.CountAsync();
+      var pagedReponse = PaginationHelper.CreatePagedReponse<Animal>(pagedData, validFilter, totalRecords, uriService, route);
+      return Ok(pagedReponse);
     }
 
     // GET api/animals
