@@ -64,8 +64,8 @@ namespace AnimalShelter.Controllers
         {
             return NotFound();
         }
-
-        return animal;
+        // var customer = await context.Animals.Where(a => a.Id == id).FirstOrDefaultAsync();
+        return Ok(new Response<Animal>(animal));
     }
 
     // PUT: api/Animals/5
