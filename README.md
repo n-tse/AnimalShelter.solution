@@ -25,7 +25,7 @@ The project is an API that lists the available animals up for adoption at an ani
 ## Setup/Installation Requirements
 
 * _Clone repository from GitHub_
-* _Open your terminal and run the command $ git clone https://github.com/n-tse/AnimalShelter.solution_
+* _Open your terminal and run the command $ git clone https://github.com/n-tse/AnimalShelter.solution/tree/swagger_
 * _Using the command $ cd AnimalShelter, navigate to the AnimalShelter directory_
 * _Within the project directory, create a file called appsettings.json_
 * _Add the following code to the new appsettings.json file:_ 
