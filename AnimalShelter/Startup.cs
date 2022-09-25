@@ -6,6 +6,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using AnimalShelter.Models;
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System.Threading.Tasks;
+// using Microsoft.AspNetCore.HttpsPolicy;
+// using Microsoft.AspNetCore.Mvc;
+// using Microsoft.Extensions.Logging;
 
 namespace AnimalShelter
 {
@@ -37,6 +44,8 @@ namespace AnimalShelter
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseOpenApi();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Animal Shelter Api v1"));
             }
             // app.UseHttpsRedirection();
 
@@ -44,11 +53,16 @@ namespace AnimalShelter
 
             app.UseAuthorization();
 
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Animal Shelter Api v1"));
+            // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Animal Shelter Api v1"));
+            // app.UseSwaggerUI(c =>
+            // {
+            //     c.SwaggerEndpoint("/myApi/swagger/v1/swagger.json", "My API V1");
+            // });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapSwagger();
             });
         }
     }

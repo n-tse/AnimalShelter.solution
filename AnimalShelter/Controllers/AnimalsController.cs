@@ -10,6 +10,7 @@ using AnimalShelter.Models;
 namespace AnimalShelter.Controllers
 {
   [Route("api/[controller]")]
+  [Consumes("application/json")]
   [ApiController]
   public class AnimalsController : ControllerBase
   {
