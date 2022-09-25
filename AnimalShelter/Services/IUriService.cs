@@ -1,4 +1,13 @@
-public interface IUriService
+using AnimalShelter.Filter;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace AnimalShelter.Services
 {
-    public Uri GetPageUri(PaginationFilter filter, string route);
+    public interface IUriService
+    {
+        public Uri GetPageUri(PaginationFilter filter, string route);
+    }
 }
